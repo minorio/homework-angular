@@ -1,0 +1,15 @@
+.box{
+  margin-top: 500px;
+  width: 100%;
+  display: flex;
+  min-height: 120px;
+  height: auto;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 30px;
+  margin: 0;
+  h1{
+    margin-top: 10px;
+  }
+}
