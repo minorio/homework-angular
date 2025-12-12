@@ -1,11 +1,10 @@
-import { provideRouter, Routes } from '@angular/router';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
+import { Routes } from '@angular/router';
+import { Task1Component } from './task1-input-output/task1/task1.component';
+import { Task2Component } from './task2-viewсhild-contentchild/task2/task2.component';
 
-const routes: Routes = [
-
+export const routes: Routes = [
+  { path: '', component: Task1Component },
+  { path: 'task1', component: Task1Component },
+  { path: 'task2', component: Task2Component },
 ];
 
-bootstrapApplication(AppComponent, {
-  providers: [provideRouter(routes)]
-});

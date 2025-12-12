@@ -6,7 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./task1-ex2-child.component.scss'],
   standalone: true,
 })
-export class Task1Ex2Child {
+export class Task1Ex2ChildComponent {
   @Output() addWord = new EventEmitter<string>();
   send(value: string) {
     const regex = /^[а-яё]+$/i;

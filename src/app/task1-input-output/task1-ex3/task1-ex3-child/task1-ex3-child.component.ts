@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule]
 })
 
-export class Task1Ex3Child  {
+export class Task1Ex3ChildComponent  {
   @Input() value: string = "";
   @Output() valueChange = new EventEmitter<string>();
 

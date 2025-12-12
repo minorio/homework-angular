@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   standalone: true
 })
 
-export class Task1Ex1Child  {
+export class Task1Ex1ChildComponent  {
   @Output() addWord = new EventEmitter<string>();
   send(value:string) {
     this.addWord.emit(value);
