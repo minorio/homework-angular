@@ -20,15 +20,22 @@ export class SharedComponent implements AfterViewInit {
     this.header.nativeElement.style.height = '100px';
     this.header.nativeElement.style.width = '400px';
     this.header.nativeElement.style.padding = '30px';
+    this.header.nativeElement.style.fontSize = '25px';
+    this.header.nativeElement.style.color = 'white';
+
 
     this.content.nativeElement.style.backgroundColor = 'darkslategray';
     this.content.nativeElement.style.height = '100px';
     this.content.nativeElement.style.width = '400px';
     this.content.nativeElement.style.padding = '30px';
+    this.content.nativeElement.style.fontSize = '25px';
+    this.content.nativeElement.style.color = 'white';
 
     this.footer.nativeElement.style.backgroundColor = 'pink';
     this.footer.nativeElement.style.height = '100px';
     this.footer.nativeElement.style.width = '400px';
     this.footer.nativeElement.style.padding = '30px';
+    this.footer.nativeElement.style.fontSize = '25px';
+    this.footer.nativeElement.style.color = 'white';
    }
 }
