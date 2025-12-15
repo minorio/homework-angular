@@ -10,10 +10,19 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class Task1Ex3ChildComponent  {
-  @Input() value: string = "";
-  @Output() valueChange = new EventEmitter<string>();
+  @Input() parentInput = '';
+  @Output() parentInputChange = new EventEmitter<string>();
 
-  send() {
-    this.valueChange.emit(this.value);
+  addBigWord() {
+    if (!this.parentInput.startsWith('Большой ')) {
+      this.parentInput = 'Большой ' + this.parentInput.replace(/^Большой |^Маленький /, '');
+      this.parentInputChange.emit(this.parentInput);
+    }
+  }
+  addSmallWord() {
+    if (!this.parentInput.startsWith('Маленький ')) {
+      this.parentInput = 'Маленький ' + this.parentInput.replace(/^Большой |^Маленький /, '');
+      this.parentInputChange.emit(this.parentInput);
+    }
   }
 }

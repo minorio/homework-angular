@@ -8,11 +8,11 @@ import { Task1Ex1ChildComponent } from './task1-ex1-child/task1-ex1-child.compon
   imports: [Task1Ex1ChildComponent],
   standalone: true,
 })
-
 export class Task1Ex1Component {
-  result = "";
-    addWord(value:string){
-      this.result = 'Большой ' + value;
-       console.log(this.result)
-    }
+  result = '';
+  text  = '';
+
+  addWord(value: string) {
+    this.result = value;
+  }
 }

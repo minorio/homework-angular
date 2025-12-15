@@ -6,10 +6,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./task1-ex1-child.component.scss'],
   standalone: true
 })
-
-export class Task1Ex1ChildComponent  {
+export class Task1Ex1ChildComponent {
+  @Input() parentInput = '';
   @Output() addWord = new EventEmitter<string>();
-  send(value:string) {
-    this.addWord.emit(value);
+
+  addBigWord() {
+    const result = 'Большой ' + this.parentInput;
+    this.addWord.emit(result);
+  }
+  addSmallWord() {
+    const result = 'Маленький ' + this.parentInput;
+    this.addWord.emit(result);
   }
 }

@@ -10,9 +10,10 @@ import { Task1Ex2ChildComponent } from './task1-ex2-child/task1-ex2-child.compon
 })
 
 export class Task1Ex2Component {
-  result = "";
-    addWord(value:string){
-      this.result = 'Большой ' + value;
-       console.log(this.result)
-    }
+  result = '';
+  text  = '';
+
+  addWord(value: string) {
+    this.result = value;
+  }
 }

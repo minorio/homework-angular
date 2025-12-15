@@ -14,10 +14,7 @@ export class Task2Ex1Component {
   @ViewChild('content') content!: ElementRef;
 
   ngAfterViewInit() {
-    // this.content.nativeElement.style.background = 'red';
     this.content.nativeElement.style.color = 'black';
-    // this.content.nativeElement.style.fontSize = '30px';
-    // this.content.nativeElement.style.padding = '20px';
     this.content.nativeElement.style.border = '5px solid black';
   }
 }
