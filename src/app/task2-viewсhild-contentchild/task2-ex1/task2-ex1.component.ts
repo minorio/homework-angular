@@ -11,13 +11,13 @@ import { SharedComponent } from "../shared/shared.component";
 })
 
 export class Task2Ex1Component {
-  @ViewChild('content1') content1!: ElementRef;
+  @ViewChild('content') content!: ElementRef;
 
   ngAfterViewInit() {
-    this.content1.nativeElement.style.background = 'yellow';
-    this.content1.nativeElement.style.color = 'white';
-    this.content1.nativeElement.style.fontSize = '30px';
-    this.content1.nativeElement.style.padding = '20px';
-    this.content1.nativeElement.style.hover = '20px';
+    // this.content.nativeElement.style.background = 'red';
+    this.content.nativeElement.style.color = 'black';
+    // this.content.nativeElement.style.fontSize = '30px';
+    // this.content.nativeElement.style.padding = '20px';
+    this.content.nativeElement.style.border = '5px solid black';
   }
 }

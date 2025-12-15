@@ -11,14 +11,10 @@ import { SharedComponent } from "../shared/shared.component";
 })
 
 export class Task2Ex3Component {
-  @ViewChild('content3') content3!: ElementRef;
+  @ViewChild('content') content!: ElementRef;
 
   ngAfterViewInit() {
-    this.content3.nativeElement.style.background = 'red';
-    this.content3.nativeElement.style.color = 'white';
-    this.content3.nativeElement.style.fontSize = '30px';
-    this.content3.nativeElement.style.padding = '20px';
-    this.content3.nativeElement.style.hover = '20px';
+    this.content.nativeElement.style.color = 'silver';
+    this.content.nativeElement.style.border = '5px solid silver';
   }
-
 }

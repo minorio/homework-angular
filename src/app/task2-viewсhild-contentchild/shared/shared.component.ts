@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit , ViewChild } from '@angular/core';
+import { Component, ElementRef, AfterViewInit , ViewChild, ContentChild } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -10,10 +10,10 @@ import { Component, ElementRef, AfterViewInit , ViewChild } from '@angular/core'
 export class SharedComponent implements AfterViewInit {
   @ViewChild("header", {static: false})
     header!: ElementRef;
-  @ViewChild("content", {static: false})
-    content!: ElementRef;
   @ViewChild("footer", {static: false})
     footer!: ElementRef;
+  @ContentChild('content', { read: ElementRef, static: false })
+    content!: ElementRef;
 
   ngAfterViewInit (){
     this.header.nativeElement.style.backgroundColor = 'darkred';
@@ -23,8 +23,7 @@ export class SharedComponent implements AfterViewInit {
     this.header.nativeElement.style.fontSize = '25px';
     this.header.nativeElement.style.color = 'white';
 
-
-    this.content.nativeElement.style.backgroundColor = 'darkslategray';
+    this.content.nativeElement.style.backgroundColor = 'green';
     this.content.nativeElement.style.height = '100px';
     this.content.nativeElement.style.width = '400px';
     this.content.nativeElement.style.padding = '30px';
@@ -39,3 +38,4 @@ export class SharedComponent implements AfterViewInit {
     this.footer.nativeElement.style.color = 'white';
    }
 }
+
