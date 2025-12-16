@@ -1,11 +1,8 @@
-<div #triggerView></div>
 <div class="box">
   <button (click)="triggerOnChanges()">OnChanges</button>
-  <button (click)="triggerOnChanges()">DoCheck </button>
-  <button (click)="triggerViewInit()">AfterViewInti</button>
-  <button (click)="triggerOnChanges()">OnChanges</button>
-  <button (click)="triggerOnChanges()">OnChanges</button>
-  <button (click)="triggerOnChanges()">OnChanges</button> 
+  <button (click)="triggerDoCheck()">DoCheck</button>
+  <button (click)="triggerContentChecked()">AfterContentChecked</button>
+  <button (click)="triggerViewChecked()">AfterViewChecked</button>
 </div>
 
-
+<task3-child [forOnChanges]="parentValue">@if(showContent){ <span>KAKOI TO TEXT Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi animi nemo, nostrum aliquid id temporibus, deserunt inventore distinctio veniam impedit perspiciatis molestiae aliquam nesciunt consequatur neque voluptas autem minus quis?</span>}</task3-child>

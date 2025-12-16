@@ -1,4 +1,5 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { Task3ChildComponent } from "./task3-child/task3-child.component";
 
 
 @Component({
@@ -6,37 +7,26 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
   templateUrl: 'task3.component.html',
   styleUrls: ['./task3.component.scss'],
   standalone: true,
+  imports: [Task3ChildComponent],
 })
 
-export class Task3Component implements  DoCheck, OnChanges, AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked{
-   constructor(){ console.log("constructor"); }
-   @Input() forOnChanges = "";
-   @ViewChild("triggerView") triggerView!: ElementRef;
+export class Task3Component{
+  parentValue = '';
+  showContent = true;
 
-    triggerOnChanges() {
+  triggerOnChanges() {
+    this.parentValue = this.parentValue + ' change';
+  }
 
-      this.forOnChanges += "kakoi-to text";
-      console.log(`event for OnChanges`, this.forOnChanges);
-    }
-    ngOnChanges() {
-      console.log(`OnChanges`);
-    }
-    ngDoCheck() {
-      console.log(`ngDoCheck`);
-    }
-    triggerViewInit() {
-      this.triggerView.nativeElement.style.fontSize = "30px"
-    }
-    ngAfterViewInit() {  
-      // console.log(`ngAfterViewInit`);
-    }
-    ngAfterViewChecked() {  
-      // console.log(`ngAfterViewChecked`);
-    }
-    ngAfterContentInit() {
-      // console.log(`ngAfterContentInit`);
-    }
-    ngAfterContentChecked() { 
-      // console.log(`ngAfterContentChecked`);
-    }
+  triggerDoCheck() {
+    this.parentValue = this.parentValue;
+  }
+
+  triggerContentChecked() {
+    this.showContent = !this.showContent;
+  }
+
+  triggerViewChecked() {
+    this.showContent = this.showContent;
+  }
 }
