@@ -1,9 +1,10 @@
 <div class="box">
   <input type="text" [(ngModel)]="text">
   <task1-ex3-child
-    [(parentInput)]="text">
+    [(parentInput)]="text"
+    (resultChange)="result = $event">
   </task1-ex3-child>
-  @if(text){
-    <h1>{{ text }}</h1>
+  @if(result){
+    <h1>{{ result }}</h1>
   }
 </div>

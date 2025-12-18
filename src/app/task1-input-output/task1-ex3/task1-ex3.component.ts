@@ -12,4 +12,5 @@ import { FormsModule } from '@angular/forms';
 
 export class Task1Ex3Component {
   text  = '';
+  result = '';
 }

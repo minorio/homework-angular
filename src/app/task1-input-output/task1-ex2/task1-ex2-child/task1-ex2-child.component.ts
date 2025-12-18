@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   standalone: true,
 })
 export class Task1Ex2ChildComponent {
-  @Input() parentInput = '';
+   _parentInput: string = '';
   @Output() addWord = new EventEmitter<string>();
 
   forbiddenWords = ['заяц', 'лиса', 'капибара'];
@@ -22,44 +22,43 @@ export class Task1Ex2ChildComponent {
     return this.forbiddenWords.some(word => value.toLowerCase().includes(word));
   }
 
-  addBigWord() {
-    let value = this.parentInput.trim();
+  @Input()
+    set parentInput(value:string) {
+    if (!value) {
+      this._parentInput = '';
+      return;
+    }
+    
+    let valueTrimmed = value.trim();
 
-    if (value.length < this.minLength || value.length > this.maxLength) {
+    if (valueTrimmed.length < this.minLength || valueTrimmed.length > this.maxLength) {
       alert('Текст слишком короткий или слишком длинный!');
+      this._parentInput = '';
       return;
     }
 
-    if (!this.checkRussianLetters(value)) {
+    if (!this.checkRussianLetters(valueTrimmed)) {
       alert('Все кроме русских букв считается запрещенным!');
+     this._parentInput = '';
       return;
     }
 
-    if (this.checkBannedWords(value)) {
+    if (this.checkBannedWords(valueTrimmed)) {
       alert('В тексте есть запрещённые слова!');
+      this._parentInput = '';
       return;
     }
+    this._parentInput = valueTrimmed
+  }
 
-    this.addWord.emit('Большой ' + value);
+  get parentInput() { return this._parentInput; }
+
+  addBigWord() {
+    if (!this.parentInput) return;
+    this.addWord.emit('Большой ' + this.parentInput);
   }
   addSmallWord() {
-    let value = this.parentInput.trim();
-
-    if (value.length < this.minLength || value.length > this.maxLength) {
-      alert('Текст слишком короткий или слишком длинный!');
-      return;
-    }
-
-    if (!this.checkRussianLetters(value)) {
-      alert('Все кроме русских букв считается запрещенным!');
-      return;
-    }
-
-    if (this.checkBannedWords(value)) {
-      alert('В тексте есть запрещённые слова!');
-      return;
-    }
-
-    this.addWord.emit('Маленький ' + value);
+    if (!this.parentInput) return;
+    this.addWord.emit('Маленький ' + this.parentInput);
   }
 }

@@ -11,10 +11,16 @@ export class Task1Ex1ChildComponent {
   @Output() addWord = new EventEmitter<string>();
 
   addBigWord() {
+    if (this.parentInput.length == 0) {
+      return;
+    }
     const result = 'Большой ' + this.parentInput;
     this.addWord.emit(result);
   }
   addSmallWord() {
+    if (this.parentInput.length == 0) {
+      return;
+    }
     const result = 'Маленький ' + this.parentInput;
     this.addWord.emit(result);
   }
