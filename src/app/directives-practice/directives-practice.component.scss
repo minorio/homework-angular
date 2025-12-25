@@ -1,17 +1,22 @@
-.box{
+.box {
   display: flex;
-  justify-content:space-around;
+  flex-direction: column;
+  align-items: center;
   margin-top: 100px;
   margin-bottom: 100px;
-  button{
+  button {
     padding: 10px 16px;
     background-color: aquamarine;
     cursor: pointer;
     border: none;
     font-size: 26px;
-    &:hover{
-    background-color: rgb(65, 139, 115);
-    color: #fff;
+    &:hover {
+      background-color: rgb(65, 139, 115);
+      color: #fff;
+    }
   }
-  }
+}
+
+.hide {
+  display: none;
 }

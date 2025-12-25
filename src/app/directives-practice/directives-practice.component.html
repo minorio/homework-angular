@@ -1,0 +1,89 @@
+<div class="box">
+  <h1>Attribute directives</h1>
+  <h2>1. Class with .</h2>
+  <div [class.hide]="classIsVisible">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo quam ab saepe laudantium a
+    minima nulla laborum laboriosam id delectus mollitia, ipsam modi adipisci fugiat rerum dolor
+    recusandae quaerat aliquid.
+  </div>
+  <button (click)="toggleClass()">Hide block!</button>
+  <h2>2. Class with ng</h2>
+  <div [ngClass]="{ hide: classNgIsVisible }">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo quam ab saepe laudantium a
+    minima nulla laborum laboriosam id delectus mollitia, ipsam modi adipisci fugiat rerum dolor
+    recusandae quaerat aliquid.
+  </div>
+  <button (click)="toggleClassNg()">Hide block!</button>
+  <h2>3. Style with .</h2>
+  <div [style.display]="styleIsVisible ? 'none' : 'block'">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo quam ab saepe laudantium a
+    minima nulla laborum laboriosam id delectus mollitia, ipsam modi adipisci fugiat rerum dolor
+    recusandae quaerat aliquid.
+  </div>
+  <button (click)="toggleStyle()">Hide block!</button>
+  <h2>4. Style with ng</h2>
+  <div [ngStyle]="{ display: styleNgIsVisible ? 'none' : 'block' }">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo quam ab saepe laudantium a
+    minima nulla laborum laboriosam id delectus mollitia, ipsam modi adipisci fugiat rerum dolor
+    recusandae quaerat aliquid.
+  </div>
+  <button (click)="toggleStyleNg()">Hide block!</button>
+  <br />
+  <h1>Structure directives</h1>
+  <h2>1. If</h2>
+  @if(value){
+  <div>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste perspiciatis, vel deserunt ad
+    consequatur veritatis ratione quas molestiae? Recusandae inventore placeat repudiandae est quasi
+    nesciunt beatae vero ex perspiciatis. Placeat?
+  </div>
+  }
+  <button (click)="toggleValue()">Hide block!</button>
+  <h2>2. ngIf</h2>
+  <div *ngIf="ngValue">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste perspiciatis, vel deserunt ad
+    consequatur veritatis ratione quas molestiae? Recusandae inventore placeat repudiandae est quasi
+    nesciunt beatae vero ex perspiciatis. Placeat?
+  </div>
+  <button (click)="toggleNgValue()">Hide block!</button>
+  <h2>3. Switch</h2>
+  @switch (switchValue) { @case (3){
+  <div>Its 3</div>
+  } @case (5){
+  <div>Its 5</div>
+  } @case (8){
+  <div>Its 8</div>
+  } @case (9){
+  <div>Its 9</div>
+  } @case (10){
+  <div>Its 10</div>
+  } @default {
+  <div>Its 0</div>
+  } }
+  <button (click)="counterForSwitch()">+1</button>
+  <!-- <h2>4. ngSwitch</h2>
+<div [ngSwitch]="switchNgValue">
+  <div *ngSwitchCase="3">Its 3</div>
+  <div *ngSwitchCase="5">Its 5</div>
+  <div *ngSwitchCase="6">Its 6</div>
+  <div *ngSwitchCase="7">Its 7</div>
+  <div *ngSwitchCase="8">Its 8</div>
+  <div *ngSwitchCase="9">Its 9</div>
+  <div *ngSwitchDefault>Its 0</div>
+</div>
+
+<button (click)="counterForNgSwitch()">+1</button> -->
+  <h2>5. For</h2>
+  @for (item of items; track item) {
+  <div>{{ item }}</div>
+  }
+  <input type="text" [(ngModel)]="newArrValue" />
+  <button (click)="addNewItem()">Создать</button>
+
+  <!-- <h2>6. ngFor</h2>
+  <div *ngFor="let item of items; trackBy: trackItem">
+    {{ item }}
+  </div>
+  <input type="text" [(ngModel)]="newArrValueNg">
+  <button (click)="addNewItemNg()">Создать</button> -->
+</div>
