@@ -1,0 +1,33 @@
+<div class="box">
+  <p
+    [customNgStyle]="{
+      display: styleIsVisible ? 'block' : 'none',
+      color: 'blue',
+      fontSize: '20px'
+    }"
+  >
+    Hello Angular
+  </p>
+  <button (click)="toggleStyle()">Hide block!</button>
+  <p [customNgClass]="{ hide: classIsVisible }">Hello Angular</p>
+  <button (click)="toggleClass()">Hide block!</button>
+  <p *customNgIf="condition">Первый параграф</p>
+  <p *customNgIf="!condition">Второй параграф</p>
+  <button (click)="toggleValue()">Toggle Value</button>
+  <div [customNgSwitch]="switchNgValue">
+    <div *customNgSwitchCase="3">Its 3</div>
+    <div *customNgSwitchCase="5">Its 5</div>
+    <div *customNgSwitchCase="7">Its 7</div>
+    <div *customNgSwitchCase="8">Its 8</div>
+    <div *customNgSwitchCase="6">Its 6</div>
+    <div *customNgSwitchCase="9">Its 9</div>
+    <div customNgSwitchDefault>Its 0 default</div>
+  </div>
+  {{ switchNgValue }}
+  <button (click)="counterForNgSwitch()">+1</button>
+  <ul>
+    <li *customNgFor="let item of items; let i = index">{{ i }}: {{ item }}</li>
+  </ul>
+  <input type="text" [(ngModel)]="newArrValue" />
+  <button (click)="addNewItem()">Добавть новое имя</button>
+</div>
