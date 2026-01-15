@@ -1,0 +1,64 @@
+<h1>Задание №1 (free tree api cards)</h1>
+<div class="box">
+  <div class="cards">
+    <div class="card">
+      <h3>Карточка №1</h3>
+      <span></span>
+        <h4>Внимание!</h4>
+        Тут вы можете насладиться высокоинтеллектуальным юмором и оценить его по достоинству.
+      </span>
+      <span>
+        <h4>Какой гений это придумал:</h4>
+        {{ memeApi?.author }}
+      </span>
+      <span>
+        <h4>{{ memeApi?.title }}</h4>
+      </span>
+      @if (memeApi) {
+      <img [src]="memeApi?.url" alt="meme" height="300" />
+      }
+      <button (click)="refreshResponseMemeImg()">Некст</button>
+    </div>
+    @let jokeItem = jokeItem$ | async;
+    <div class="card">
+      <h3>Карточка №2</h3>
+      <span>
+        <h4>Внимание!</h4>
+        тут шутка-минутка, очень смешно
+      </span>
+      <span>
+        <h4>Сетап:</h4>
+        {{ jokeItem?.setup }}
+      </span>
+      <span>
+        <h4>Панчлайн:</h4>
+        {{ jokeItem?.punchline }}
+      </span>
+      <button (click)="refreshResponseJoke()">Новая смехуятина</button>
+    </div>
+    @let ipInfo = ipInfo$ | async;
+    <div class="card">
+      <h3>Карточка №3</h3>
+      <span>
+        <h4>Внимание!</h4>
+        Тут есть возможность отследить того самого школьника из мультиплеерной игры и вычислить его
+        по IP. Пользуйтесь с умом.
+      </span>
+      <span>
+        <h4>Айпи:</h4>
+        {{ ipInfo?.ip }}
+      </span>
+      <span>
+        <h4>Локация:</h4>
+        {{ ipInfo?.location }}
+      </span>
+      <span>
+        <h4>Часовой пояс:</h4>
+        {{ ipInfo?.timezone }}
+      </span>
+      <input type="text" maxlength="15" minlength="12" (change)="currentIp = $event.target.value"
+        placeholder="Пример: 161.185.160.93" />
+      <button (click)="checkCurrentIp()">Чекнуть айпи</button>
+    </div>
+  </div>
+</div>

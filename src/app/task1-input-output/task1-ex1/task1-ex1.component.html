@@ -1,9 +1,0 @@
-<div class="box">
-  <input type="text" (input)="text = $event.target.value">
-  <task1-ex1-child
-    [parentInput]="text" (addWord)="addWord($event)">
-  </task1-ex1-child>
-  @if(result){
-    <h1>{{ result }}</h1>
-  }
-</div>
