@@ -1,0 +1,6 @@
+<h1>Задание №2 (new Observable)</h1>
+<div class="box">
+  <input type="text" placeholder="Писать тут" (input)="onInput($event.target.value)" />
+  <h3>{{ myObservable$ | async }}</h3>
+  <button (click)="finishObservable()">Завершить поток</button>
+</div>

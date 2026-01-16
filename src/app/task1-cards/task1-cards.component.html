@@ -1,9 +1,9 @@
-<h1>Задание №1 (free tree api cards)</h1>
+<h1>Задание №1 (free 3 api cards)</h1>
 <div class="box">
   <div class="cards">
     <div class="card">
       <h3>Карточка №1</h3>
-      <span></span>
+      <span>
         <h4>Внимание!</h4>
         Тут вы можете насладиться высокоинтеллектуальным юмором и оценить его по достоинству.
       </span>
@@ -34,7 +34,7 @@
         <h4>Панчлайн:</h4>
         {{ jokeItem?.punchline }}
       </span>
-      <button (click)="refreshResponseJoke()">Новая смехуятина</button>
+      <button (click)="refreshResponseJoke()">Новый панч из Однокласнников</button>
     </div>
     @let ipInfo = ipInfo$ | async;
     <div class="card">
@@ -56,8 +56,13 @@
         <h4>Часовой пояс:</h4>
         {{ ipInfo?.timezone }}
       </span>
-      <input type="text" maxlength="15" minlength="12" (change)="currentIp = $event.target.value"
-        placeholder="Пример: 161.185.160.93" />
+      <input
+        type="text"
+        maxlength="15"
+        minlength="12"
+        (change)="currentIp = $event.target.value"
+        placeholder="Пример: 161.185.160.93"
+      />
       <button (click)="checkCurrentIp()">Чекнуть айпи</button>
     </div>
   </div>

@@ -18,7 +18,9 @@ export class Task1CardsComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit() {
-    this.httpClient.get<any>('https://meme-api.com/gimme/shitpost_ru').subscribe((data) => this.memeApi = data);
+    this.httpClient
+      .get<any>('https://meme-api.com/gimme')
+      .subscribe((data) => (this.memeApi = data));
     this.jokeItem$ = this.httpClient.get<any>('https://official-joke-api.appspot.com/random_joke');
   }
 
@@ -34,7 +36,7 @@ export class Task1CardsComponent implements OnInit {
     }
   }
   refreshResponseMemeImg() {
-    this.httpClient.get<any>('https://meme-api.com/gimme/shitpost_ru').subscribe((data) => {
+    this.httpClient.get<any>('https://meme-api.com/gimme').subscribe((data) => {
       this.memeApi = data;
     });
   }
