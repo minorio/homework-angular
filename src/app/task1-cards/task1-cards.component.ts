@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { MemeApiService } from '../shared/api/meme-api.service';
+import { IMemeResponse } from '../shared/models/meme.model';
+import { IMapeedIpInfo } from '../shared/models/ipInfo.model';
+import { IJokeResponse } from '../shared/models/joke.model';
+import { JokeApiService } from '../shared/api/joke-api.service';
+import { IpInfoApiService } from '../shared/api/ip-info-api.service';
 
 @Component({
   selector: 'task1-cards',
@@ -11,36 +16,38 @@ import { map, Observable } from 'rxjs';
   imports: [CommonModule],
 })
 export class Task1CardsComponent implements OnInit {
-  memeApi: any = null;
-  jokeItem$: Observable<any> | undefined;
-  ipInfo$: Observable<any> | undefined;
-  currentIp = '';
-  constructor(private httpClient: HttpClient) {}
+  memeApi: IMemeResponse | null = null;
+  jokeItem$: Observable<IJokeResponse> | null = null;
+  ipInfo$: Observable<IMapeedIpInfo> | null = null;
+  currentIp: string = '';
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    public memeApiService: MemeApiService,
+    public jokeApiService: JokeApiService,
+    public ipInfoApiService: IpInfoApiService,
+  ) {}
 
   ngOnInit() {
-    this.httpClient
-      .get<any>('https://meme-api.com/gimme')
-      .subscribe((data) => (this.memeApi = data));
-    this.jokeItem$ = this.httpClient.get<any>('https://official-joke-api.appspot.com/random_joke');
+    this.memeApiService.getMeme().subscribe((data) => {
+      this.memeApi = data;
+      this.cdr.detectChanges();
+    });
+    this.jokeItem$ = this.jokeApiService.getJoke();
   }
 
-  checkCurrentIp() {
+  checkCurrentIp(): void {
     if (this.currentIp) {
-      this.ipInfo$ = this.httpClient.get<any>(`https://ipinfo.io/${this.currentIp}/geo`).pipe(
-        map((data) => ({
-          location: `${data.country}, ${data.city}`,
-          timezone: data.timezone,
-          ip: data.ip,
-        }))
-      );
+      this.ipInfo$ = this.ipInfoApiService.getIpInfo(this.currentIp);
     }
   }
-  refreshResponseMemeImg() {
-    this.httpClient.get<any>('https://meme-api.com/gimme').subscribe((data) => {
+  refreshResponseMemeImg(): void {
+    this.memeApiService.getMeme().subscribe((data) => {
       this.memeApi = data;
+      this.cdr.detectChanges();
     });
   }
-  refreshResponseJoke() {
-    this.jokeItem$ = this.httpClient.get<any>('https://official-joke-api.appspot.com/random_joke');
+  refreshResponseJoke(): void {
+    this.jokeItem$ = this.jokeApiService.getJoke();
   }
 }

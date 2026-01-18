@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
 
 @Component({
@@ -9,25 +9,47 @@ import { Observable, Subscriber } from 'rxjs';
   standalone: true,
   imports: [CommonModule],
 })
-export class Task2ObservableComponent {
-  inputValue = '';
-  subscriber?: Subscriber<string>;
-  myObservable$ = new Observable<string>((sub) => {
-    this.subscriber = sub;
-  });
+export class Task2ObservableComponent implements OnInit {
+  private subscriber: Subscriber<string> | null = null;
+  myObservable$: Observable<string> | null = null;
 
-  onInput(value: string) {
-    this.inputValue = value;
+  currentValue: string | null = null;
+  error: string | null = null;
 
-    if (this.inputValue === 'CENSORED') {
-      this.subscriber?.error('Ошибка! Обнаружено запрещённое слово !!!');
-      return;
-    }
+  ngOnInit() {
+    this.myObservable$ = new Observable<string>((sub) => {
+      this.subscriber = sub;
+    });
 
-    this.subscriber?.next(this.inputValue);
+    this.myObservable$.subscribe({
+      next: (value) => {
+        this.currentValue = value;
+      },
+      error: (error) => {
+        this.error = error;
+      },
+    });
   }
 
-  finishObservable() {
-    this.subscriber?.complete();
+  sendValue(value: string): void {
+    if (!this.subscriber) return;
+    try {
+      if (value === 'CENSORED') {
+        throw new Error('Ошибка! Обнаружено запрещённое слово !!!');
+      }
+      this.subscriber.next(value);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        this.subscriber.error(error.message);
+        console.error(error.message);
+      } else {
+        console.error('Неизвестная ошибочка!');
+      }
+    }
+  }
+
+  finishObservable(): void {
+    if (!this.subscriber) return;
+    this.subscriber.complete();
   }
 }

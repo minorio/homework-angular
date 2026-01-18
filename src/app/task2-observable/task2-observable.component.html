@@ -1,6 +1,22 @@
 <h1>Задание №2 (new Observable)</h1>
 <div class="box">
-  <input type="text" placeholder="Писать тут" (input)="onInput($event.target.value)" />
-  <h3>{{ myObservable$ | async }}</h3>
+  @if (error) {
+    <h4 class="error">
+      {{ error }}
+    </h4>
+  } @else{
+     <h3>{{ currentValue }}</h3>
+  }
+  <button (click)="sendValue('1')">1</button>
+  <button (click)="sendValue('2')">2</button>
+  <button (click)="sendValue('3')">3</button>
+  <button (click)="sendValue('4')">4</button>
+  <button (click)="sendValue('5')">5</button>
+  <button (click)="sendValue('6')">6</button>
+  <button (click)="sendValue('7')">7</button>
+  <button (click)="sendValue('8')">8</button>
+  <button (click)="sendValue('9')">9</button>
+  <button (click)="sendValue('10')">10</button>
+  <button (click)="sendValue('CENSORED')">Что-то запрещенное</button>
   <button (click)="finishObservable()">Завершить поток</button>
 </div>

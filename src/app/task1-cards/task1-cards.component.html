@@ -7,15 +7,16 @@
         <h4>Внимание!</h4>
         Тут вы можете насладиться высокоинтеллектуальным юмором и оценить его по достоинству.
       </span>
-      <span>
-        <h4>Какой гений это придумал:</h4>
-        {{ memeApi?.author }}
-      </span>
-      <span>
-        <h4>{{ memeApi?.title }}</h4>
-      </span>
       @if (memeApi) {
-      <img [src]="memeApi?.url" alt="meme" height="300" />
+        <span>
+          <h4>Какой гений это придумал:</h4>
+          {{ memeApi.author }}
+        </span>
+        <span>
+          <h4>{{ memeApi.title }}</h4>
+        </span>
+
+        <img [src]="memeApi.url" alt="meme" height="300" />
       }
       <button (click)="refreshResponseMemeImg()">Некст</button>
     </div>
@@ -26,14 +27,16 @@
         <h4>Внимание!</h4>
         тут шутка-минутка, очень смешно
       </span>
-      <span>
-        <h4>Сетап:</h4>
-        {{ jokeItem?.setup }}
-      </span>
-      <span>
-        <h4>Панчлайн:</h4>
-        {{ jokeItem?.punchline }}
-      </span>
+      @if (jokeItem) {
+        <span>
+          <h4>Сетап:</h4>
+          {{ jokeItem.setup }}
+        </span>
+        <span>
+          <h4>Панчлайн:</h4>
+          {{ jokeItem.punchline }}
+        </span>
+      }
       <button (click)="refreshResponseJoke()">Новый панч из Однокласнников</button>
     </div>
     @let ipInfo = ipInfo$ | async;
@@ -44,18 +47,20 @@
         Тут есть возможность отследить того самого школьника из мультиплеерной игры и вычислить его
         по IP. Пользуйтесь с умом.
       </span>
-      <span>
-        <h4>Айпи:</h4>
-        {{ ipInfo?.ip }}
-      </span>
-      <span>
-        <h4>Локация:</h4>
-        {{ ipInfo?.location }}
-      </span>
-      <span>
-        <h4>Часовой пояс:</h4>
-        {{ ipInfo?.timezone }}
-      </span>
+      @if (ipInfo) {
+        <span>
+          <h4>Айпи:</h4>
+          {{ ipInfo.ip }}
+        </span>
+        <span>
+          <h4>Локация:</h4>
+          {{ ipInfo.location }}
+        </span>
+        <span>
+          <h4>Часовой пояс:</h4>
+          {{ ipInfo.timezone }}
+        </span>
+      }
       <input
         type="text"
         maxlength="15"
