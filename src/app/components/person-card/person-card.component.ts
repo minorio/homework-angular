@@ -34,13 +34,13 @@ import { Character } from '../../models/character.model';
 })
 export class PersonCardComponent implements OnInit {
   @Input() person: Character | null = null;
-  dialog = inject(MatDialog);
+  private dialog = inject(MatDialog);
 
   constructor(public personService: PersonService) {}
 
   ngOnInit(): void {}
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  protected openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const ref = this.dialog.open(PersonDialogComponent, {
       width: '400px',
       data: this.person,

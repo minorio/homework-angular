@@ -10,7 +10,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
   private readonly url = 'https://dattebayo-api.onrender.com/characters';
 
-  getCharacters(): Observable<Character[]> {
+  public getCharacters(): Observable<Character[]> {
   return this.http
     .get<CharactersResponse>(this.url)
     .pipe(map(res => res.characters));

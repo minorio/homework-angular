@@ -4,14 +4,14 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 
 export class PaginationService {
-  page$ = new BehaviorSubject(1);
-  limit$ = new BehaviorSubject(12);
+  public page$ = new BehaviorSubject(1);
+  public limit$ = new BehaviorSubject(12);
 
-  setPage(page: number): void {
+  public setPage(page: number): void {
     this.page$.next(page);
   }
 
-  setLimit(limit: number): void {
+  public setLimit(limit: number): void {
     this.limit$.next(limit);
   }
 }

@@ -16,7 +16,7 @@ import { FilterGenderPipe } from "../../pipes/filterGender.pipe";
   imports: [PersonCardComponent, CommonModule, MatIconModule, MatButtonModule, FilterGenderPipe]
 })
 export class PeopleListComponent implements OnInit { 
-  people$: Observable<Character[]> | null = null;
+  public people$: Observable<Character[]> | null = null;
 
   constructor(private personService: PersonService,
   private pagination: PaginationService) {}

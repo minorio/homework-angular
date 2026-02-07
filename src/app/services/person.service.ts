@@ -7,12 +7,12 @@ import { Character } from '../models/character.model';
   providedIn: 'root',
 })
 export class PersonService {
-  people: Character[] = [];
-  peopleSubject$ = new BehaviorSubject<Character[]>([]);
+  private people: Character[] = [];
+  private peopleSubject$ = new BehaviorSubject<Character[]>([]);
 
   constructor(private api: ApiService) {}
 
-  load(): Observable<Character[]> {
+  public load(): Observable<Character[]> {
     return this.api.getCharacters().pipe(
       tap((list) => {
         this.people = list;
@@ -21,7 +21,7 @@ export class PersonService {
     );
   }
 
-  updatePerson(updated: Character): void {
+  public updatePerson(updated: Character): void {
     const people = this.peopleSubject$.getValue();
     const updatedList = people.map((person) => (person.id === updated.id ? updated : person));
 

@@ -39,7 +39,7 @@ import { Character } from '../../models/character.model';
   ],
 })
 export class PersonDialogComponent {
-  form: FormGroup;
+  protected form: FormGroup;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public person: Character,
@@ -54,7 +54,7 @@ export class PersonDialogComponent {
     });
   }
 
-  savePerson(): void {
+  protected savePerson(): void {
     const updated = {
       ...this.person,
       name: this.form.value.name,
@@ -69,7 +69,7 @@ export class PersonDialogComponent {
     this.dialogRef.close(updated);
   }
 
-  cancel(): void {
+  protected cancel(): void {
     this.dialogRef.close();
   }
 }
