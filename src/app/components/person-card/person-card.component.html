@@ -1,1 +1,28 @@
-<div>карточка</div>
+<mat-card class="card" appearance="outlined">
+  @if (person) {
+  <mat-card-header>
+    <mat-card-title>{{ person.name }}</mat-card-title>
+    @if (person.rank) {
+    <mat-card-subtitle>
+      Rank: <strong>{{ person.rank | rank }}</strong></mat-card-subtitle>
+    }
+    @if (person.personal) {
+    <mat-card-subtitle>{{
+      person.personal.birthdate | labelValue: 'Birthdate'
+      }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ person.personal.clan | labelValue: 'Clan' }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ person.personal.sex | labelValue: 'Sex' }}</mat-card-subtitle>
+
+    <mat-card-subtitle>{{
+      person.personal.bloodType | labelValue: 'BloodTypen'
+      }}</mat-card-subtitle>
+    <mat-card-subtitle><strong>{{ person.personal.status | labelValue: 'Status' }}</strong></mat-card-subtitle>
+    }
+  </mat-card-header>
+
+  <img mat-card-image [src]="person.images[0]" alt="Photo Character" />
+  }
+  <mat-card-actions>
+    <button matButton="filled" (click)="openDialog('300ms', '100ms')">Edit</button>
+  </mat-card-actions>
+</mat-card>

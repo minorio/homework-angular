@@ -1,0 +1,33 @@
+<mat-dialog-content>
+  <h2 mat-dialog-title>Edit Card</h2>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Clan</mat-label>
+      <input matInput formControlName="clan" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Birthdate</mat-label>
+      <input matInput formControlName="birthdate" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sex</mat-label>
+      <input matInput formControlName="sex" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Blood Type</mat-label>
+      <input matInput formControlName="bloodType" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button matButton="filled" (click)="savePerson()">Save</button>
+</mat-dialog-actions>

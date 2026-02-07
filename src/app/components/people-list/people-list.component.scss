@@ -1,0 +1,30 @@
+.conatainer {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.people {
+  padding: 30px 0;
+  position: relative;
+  width: 100%;
+  &-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  &-buttons {
+    position: fixed;
+    top: 10px;
+    left: 120px;
+    button {
+      background-color: rgb(244, 250, 248);
+      border-radius: 0%;
+      margin: 0 4px;
+      width: 100px;
+      mat-icon {
+        transform: scale(1.8);
+      }
+    }
+  }
+}

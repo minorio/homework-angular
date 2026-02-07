@@ -1,1 +1,18 @@
-<div>список карточек</div>
+<div class="conatainer">
+  <div class="people">
+    <div class="people-list">
+    <!-- @for (person of (people$ | async | filterByGender: 'male'); track person.id){ -->
+    @for (person of people$ | async; track person.id){
+        <person-card [person]="person"></person-card>
+      }
+    </div>
+    <div class="people-buttons">
+      <button matFab>
+        <mat-icon (click)="prevPage()">arrow_left</mat-icon>
+      </button>
+      <button matFab (click)="nextPage()">
+        <mat-icon>arrow_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

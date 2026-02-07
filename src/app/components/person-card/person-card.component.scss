@@ -1,0 +1,21 @@
+.card {
+  width: 340px;
+  height: auto;
+  mat-card-title{
+    color: rgb(30, 111, 117);
+    font-weight: 500;
+  }
+  mat-card-header {
+    display: flex;
+    flex-direction: column;
+  }
+  mat-card-actions{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    button{
+      border-radius: 4px;
+      width: 30%;
+    }
+  }
+}
