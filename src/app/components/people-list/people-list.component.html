@@ -1,18 +1,24 @@
 <div class="conatainer">
   <div class="people">
+  <mat-form-field class="search">
+      <mat-label>Search by name</mat-label>
+      <input matInput [formControl]="searchControl" placeholder="Search..." />
+    </mat-form-field>
     <div class="people-list">
-    <!-- @for (person of (people$ | async | filterByGender: 'male'); track person.id){ -->
-    @for (person of people$ | async; track person.id){
-        <person-card [person]="person"></person-card>
-      }
+    @for (person of people$ | asyncPipe; track person.id) {
+      <person-card [person]="person"></person-card>
+    }
     </div>
+    <!-- Доп проверка if на всякий -->
+    <!-- @if(!searchControl.value){ -->
     <div class="people-buttons">
-      <button matFab>
+      <button matFab [disabled]="(pagination.page$ | async) === 1">
         <mat-icon (click)="prevPage()">arrow_left</mat-icon>
       </button>
       <button matFab (click)="nextPage()">
         <mat-icon>arrow_right</mat-icon>
       </button>
     </div>
+      <!-- } -->
   </div>
 </div>

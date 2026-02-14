@@ -2,29 +2,52 @@
   max-width: 1300px;
   margin: 0 auto;
 }
+
 .people {
   padding: 30px 0;
   position: relative;
   width: 100%;
+
+  .search {
+    display: block;
+    width: min(1000px, 100%);
+    margin: 0 auto 32px;
+  }
+
   &-list {
     width: 100%;
-    display: flex;
+    display: grid;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
+    grid-template-columns: repeat(auto-fill, 340px);
+    gap: 20px;
   }
+
   &-buttons {
     position: fixed;
-    top: 10px;
-    left: 120px;
+    top: 20px;
+    left: 40px;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+
     button {
       background-color: rgb(244, 250, 248);
-      border-radius: 0%;
-      margin: 0 4px;
-      width: 100px;
+      width: 80px;
+      height: 56px;
+      border-radius: 7px;
+
       mat-icon {
-        transform: scale(1.8);
+        transform: scale(1.7);
       }
     }
+  }
+}
+
+@media (max-width: 900px) {
+  .people-buttons {
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

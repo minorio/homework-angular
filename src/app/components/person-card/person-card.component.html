@@ -2,9 +2,11 @@
   @if (person) {
   <mat-card-header>
     <mat-card-title>{{ person.name }}</mat-card-title>
-    @if (person.rank) {
+    @if (getRankValue(person.rank); as rank) {
     <mat-card-subtitle>
-      Rank: <strong>{{ person.rank | rank }}</strong></mat-card-subtitle>
+      Rank:
+      <span class="rank" [class]="rank | rankBadge"></span><strong>{{ rank }}</strong>
+    </mat-card-subtitle>
     }
     @if (person.personal) {
     <mat-card-subtitle>{{
@@ -19,8 +21,13 @@
     <mat-card-subtitle><strong>{{ person.personal.status | labelValue: 'Status' }}</strong></mat-card-subtitle>
     }
   </mat-card-header>
-
-  <img mat-card-image [src]="person.images[0]" alt="Photo Character" />
+  <div class="card_img-box">
+    @if (person.images?.[0]) {
+    <img mat-card-image [src]="person.images[0]" alt="Photo" />
+    } @else {
+    <img mat-card-image [src]="'https://placehold.co/600x400?text=No+Photo'" alt="Photo" />
+    }
+  </div>
   }
   <mat-card-actions>
     <button matButton="filled" (click)="openDialog('300ms', '100ms')">Edit</button>
