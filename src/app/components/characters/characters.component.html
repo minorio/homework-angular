@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="table-container">
+    <characters-filters
+      [(selectedNarutoGender)]="selectedNarutoGender"
+      [(selectedDemonSlayerGender)]="selectedDemonSlayerGender"
+      [(selectedSexualOrientation)]="selectedSexualOrientation"
+      [(selectedNarutoKink)]="selectedNarutoKink"
+      [(selectedDemonSlayerRace)]="selectedDemonSlayerRace"
+      [(searchText)]="searchText"
+      (filterChange)="onFilterChange()"
+      (resetFiltersClick)="resetFilters()"
+    ></characters-filters>
+    <characters-table
+      [dataSource]="dataSource"
+      [displayedColumns]="displayedColumns"
+      [displayedColumnsWithExpand]="displayedColumnsWithExpand"
+      [expandedElement]="expandedElement"
+      [editingElementId]="editingElementId"
+      [searchText]="searchText"
+      (toggleRow)="onToggleRow($event)"
+      (deleteRow)="onDeleteRow($event)"
+      (editModeChange)="onEditModeChange($event)"
+      (saveChanges)="onSaveChanges($event)"
+      [noDataMessage]="getNoDataMessage()"
+    ></characters-table>
+    <mat-paginator
+      #paginator
+      [length]="totalElements"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="onPageChange($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

@@ -1,21 +1,20 @@
-export interface CharactersResponse {
-  characters: Character[];
+export interface NarutoCharactersResponse {
+  characters: NarutoCharacter[];
   currentPage: number;
   pageSize: number;
   total: number;
 }
 
-export interface Character {
+export interface NarutoCharacter {
   id: number;
   name: string;
   images: string[] | [];
-  debut: Debut;
-  personal: Personal;
-  rank?: Rank;
+  debut: NarutoDebut;
+  personal: NarutoPersonal;
+  rank?: NarutoRank;
   affiliation?: string[];
 }
-
-export interface Personal {
+export interface NarutoPersonal {
   status?: string;
   birthdate?: string;
   sex?: string;
@@ -32,11 +31,11 @@ export type NinjaRankPeriod =
   | 'Gaiden'
   | 'Boruto Manga';
 
-export interface Rank {
+export interface NarutoRank {
   ninjaRank?: Partial<Record<NinjaRankPeriod, string>>;
 }
 
-export interface Debut {
+export interface NarutoDebut {
   anime: string;
   manga: string;
 }

@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { PeopleListComponent } from './components/people-list/people-list.component';
+import { CharactersComponent } from './components/characters/characters.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/peoples', pathMatch: 'full'},
-  { path: 'peoples', component: PeopleListComponent},
-  { path: '**', redirectTo: '/peoples', pathMatch: 'full'},
+  { path: '', redirectTo: '/table', pathMatch: 'full'},
+  { path: 'table', component: CharactersComponent},
+  { path: '**', redirectTo: '/table', pathMatch: 'full'},
 
 ];
 

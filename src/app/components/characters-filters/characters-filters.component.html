@@ -1,0 +1,80 @@
+<div class="filters">
+  <mat-form-field class="search">
+    <mat-label>Search</mat-label>
+    <input 
+      matInput 
+      [(ngModel)]="searchText"
+      (ngModelChange)="onSearchChange()"
+      placeholder="Typing anything" 
+      #input 
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Gender Naruto Character</mat-label>
+    <mat-select 
+      [(ngModel)]="selectedNarutoGender"
+      (ngModelChange)="onFilterChange()"
+    >
+      <mat-option value="">All</mat-option>
+      <mat-option value="Male">Male</mat-option>
+      <mat-option value="Female">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Gender Demon Slayer Character</mat-label>
+    <mat-select 
+      [(ngModel)]="selectedDemonSlayerGender"
+      (ngModelChange)="onFilterChange()"
+    >
+      <mat-option value="">All</mat-option>
+      <mat-option value="Male">Male</mat-option>
+      <mat-option value="Female">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sexual Orientation Naruto Character</mat-label>
+    <mat-select 
+      [(ngModel)]="selectedSexualOrientation"
+      (ngModelChange)="onFilterChange()"
+    >
+      <mat-option value="">All</mat-option>
+      <mat-option value="Gay">Gay</mat-option>
+      <mat-option value="Lesbian">Lesbian</mat-option>
+      <mat-option value="Hetero">Hetero</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Kink/Preference Naruto Character</mat-label>
+    <mat-select 
+      [(ngModel)]="selectedNarutoKink"
+      (ngModelChange)="onFilterChange()"
+    >
+      <mat-option value="No sexual deviations">No sexual deviations</mat-option>
+      <mat-option value="Teratophile">Teratophile</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Race Demon Slayer Character</mat-label>
+    <mat-select 
+      [(ngModel)]="selectedDemonSlayerRace"
+      (ngModelChange)="onFilterChange()"
+    >
+      <mat-option value="">All</mat-option>
+      <mat-option value="Human">Human</mat-option>
+      <mat-option value="Demon">Demon</mat-option>
+    </mat-select>
+  </mat-form-field>
+<button 
+  matFab
+  (click)="resetFilters()"
+  [disabled]="!hasActiveFilters"
+  class="reset-filters-btn"
+>
+  Clear Filters
+</button>
+</div>

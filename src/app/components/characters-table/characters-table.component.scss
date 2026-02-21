@@ -1,0 +1,186 @@
+.character-details {
+  &_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 30px;
+    background: #f4f6ff;
+    border-radius: 16px;
+    position: relative;
+  }
+
+  &_image {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    border: 2px solid #2e3b75;
+    background: #ffffff;
+    border-radius: 10%;
+  }
+  &_info {
+    flex: 1;
+    max-width: 650px;
+    position: relative;
+    .edit-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 5px;
+    }
+    h3 {
+      margin-top: 0;
+      color: #465375;
+      font-size: 24px;
+    }
+
+    p {
+      margin: 8px 0;
+      font-size: 16px;
+      color: #555;
+
+      strong {
+        color: #333;
+        font-weight: 600;
+      }
+    }
+
+    @media (max-width: 768px) {
+      text-align: center;
+    }
+  }
+}
+
+.characters-table {
+  width: 100%;
+  border-radius: 8px;
+  overflow-x: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  &_header {
+    background-color: #465375 !important;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 16px 12px;
+    text-align: left;
+
+    &:last-child {
+      text-align: center;
+    }
+    .mat-sort-header-arrow {
+      color: white !important;
+    }
+    ::ng-deep .mat-sort-header-arrow {
+      color: white !important;
+    }
+  }
+
+  &_cell {
+    padding: 12px 8px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #333;
+
+    &:last-child {
+      text-align: center;
+    }
+  }
+
+  .main-row {
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: rgba(102, 126, 234, 0.05);
+    }
+  }
+
+  .character-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10%;
+    border: 2px solid #2e3b75;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+    &[src*='demonslayer-api'] {
+      object-fit: contain;
+    }
+  }
+
+  button[mat-icon-button] {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+
+    &:hover {
+      background: rgba(244, 67, 54, 0.1);
+    }
+  }
+}
+
+mat-paginator {
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  .characters-table {
+    &_header,
+    &_cell {
+      font-size: 12px;
+      padding: 8px 4px;
+    }
+
+    .character-image {
+      width: 60px;
+      height: 60px;
+    }
+
+    .character-details_wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .character-details_image {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
+.detail-row {
+  background: transparent;
+}
+
+.edit-mode {
+  background: #f4f6ff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  gap: 30px;
+}
+
+.edit-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edit-form mat-form-field {
+  width: 100%;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 10px;
+}
